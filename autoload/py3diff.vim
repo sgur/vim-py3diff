@@ -12,7 +12,6 @@ function! py3diff#diffexpr()
     call writefile(['1c1'], v:fname_out)
     return
   endif
-  echomsg getfsize(v:fname_in) getfsize(v:fname_new)
   python3 diff_files(vim.eval("v:fname_in"), vim.eval("v:fname_new"), vim.eval("v:fname_out")
         \ , vim.eval("&diffopt =~# 'icase'")==1, vim.eval("&diffopt =~# 'iwhite'")==1)
 endfunction
