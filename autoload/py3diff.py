@@ -52,8 +52,8 @@ def diff_files(fname_in, fname_new, fname_out, ignore_case=False, ignore_whitesp
     oldfname = os.path.expanduser(fname_in)
     newfname = os.path.expanduser(fname_new)
     outfname = os.path.expandvars(fname_out)
-    with open(oldfname, encoding='utf-8') as oldf, open(newfname, encoding='utf-8') as newf:
+    with open(oldfname, encoding='utf-8', errors='surrogateescape') as oldf, open(newfname, encoding='utf-8', errors='surrogateescape') as newf:
         oldlines, newlines = list(oldf), list(newf)
     diff = ed_diff(oldlines, newlines, ignore_case, ignore_whitespaces)
-    with open(outfname, mode='w', encoding='utf-8') as outf:
+    with open(outfname, mode='w', encoding='utf-8', errors='surrogateescape') as outf:
         outf.writelines(diff)
