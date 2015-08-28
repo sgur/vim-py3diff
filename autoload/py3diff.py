@@ -32,7 +32,7 @@ def ed_diff(old, new, ignore_case, ignore_whitespaces, lineterm='\n'):
                     yield '< ' + line
                 continue
             if tag == 'insert':
-                yield '{}old_lines{}{}'.format(file1_range, file2_range, lineterm)
+                yield '{}a{}{}'.format(file1_range, file2_range, lineterm)
                 for line in new[j1:j2]:
                     yield '> ' + line
                 continue
