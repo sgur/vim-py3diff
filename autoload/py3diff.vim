@@ -12,7 +12,7 @@ function! py3diff#diffexpr()
     call writefile(['1c1'], v:fname_out)
     return
   endif
-  python3 diff_files(vim.eval("v:fname_in"), vim.eval("v:fname_new"), vim.eval("v:fname_out")
+  python3 py3diff_diff_files(vim.eval("v:fname_in"), vim.eval("v:fname_new"), vim.eval("v:fname_out")
         \ , vim.eval("&diffopt =~# 'icase'")==1, vim.eval("&diffopt =~# 'iwhite'")==1)
 endfunction
 

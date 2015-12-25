@@ -2,7 +2,7 @@ import difflib
 import os.path
 
 
-class Diff(object):
+class Py3Diff(object):
 
     def __init__(self, ignore_case, ignore_whitespaces):
         self._ignore_case = ignore_case
@@ -52,13 +52,13 @@ class Diff(object):
                         yield '> ' + line
 
 
-def diff_files(fname_in, fname_new, fname_out, ignore_case=False, ignore_whitespaces=False):
+def py3diff_diff_files(fname_in, fname_new, fname_out, ignore_case=False, ignore_whitespaces=False):
     oldfname = os.path.expanduser(fname_in)
     newfname = os.path.expanduser(fname_new)
     outfname = os.path.expandvars(fname_out)
     with open(oldfname, encoding='utf-8', errors='surrogateescape') as oldf, open(newfname, encoding='utf-8', errors='surrogateescape') as newf:
         oldlines, newlines = list(oldf), list(newf)
-    diff = Diff(ignore_case, ignore_whitespaces)
+    diff = Py3Diff(ignore_case, ignore_whitespaces)
     ed = diff.ed_diff(oldlines, newlines)
     with open(outfname, mode='w', encoding='utf-8', errors='surrogateescape') as outf:
         outf.writelines(ed)
